@@ -52,7 +52,7 @@ struct ContentView: View {
                 
                 appDelegate.interfaceOrientations = [.landscapeLeft]
             }.onDisappear() {
-                appDelegate.interfaceOrientations = .portrait
+                //appDelegate.interfaceOrientations = .portrait
             }
         
     }

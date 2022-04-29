@@ -23,6 +23,8 @@ struct ContentView: View {
                 DragableImage(name: img3url)
                 DragableImage(name: img4url)
             }
+            .padding()
+            .border(Color.orange)
             
             DroppableArea()
         }.padding(40)

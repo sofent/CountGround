@@ -12,6 +12,7 @@ struct CountGroudApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
         }
     }
 }

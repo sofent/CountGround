@@ -7,12 +7,17 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import UIKit
 
 struct ContentView: View {
     let img1url = "Images/grape"
     let img2url = "Images/banana"
     let img3url = "Images/peach"
     let img4url = "Images/kiwi"
+    @State var showResult = false
+    @State var images1 :[ImageModel] = []
+    @State var images2 :[ImageModel] = []
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some View {
         HStack {
@@ -25,9 +30,31 @@ struct ContentView: View {
             }
             .padding()
             .border(Color.orange)
-            
-            DroppableArea()
+            VStack{
+                DroppableArea(images: $images1)
+                Text("\(images1.count)").font(.title)
+            }
+            Text("+").font(.largeTitle)
+            VStack{
+                DroppableArea(images: $images2)
+                Text("\(images2.count)").font(.title)
+            }
+            VStack{
+                
+                Text( showResult ? "\(images1.count+images2.count)":"?").font(.largeTitle)
+                Button("ShowResult"){
+                    showResult.toggle()
+                }.padding()
+                
+            }
         }.padding(40)
+            .onAppear() {
+                
+                appDelegate.interfaceOrientations = [.landscapeLeft]
+            }.onDisappear() {
+                appDelegate.interfaceOrientations = .portrait
+            }
+        
     }
     
     struct DragableImage: View {
@@ -49,11 +76,11 @@ struct ContentView: View {
     struct ImageModel:Identifiable{
         var id: Int
         
-         var pos: CGPoint
-         var name: String
+        var pos: CGPoint
+        var name: String
     }
     struct DroppableArea: View {
-        @State private var images: [ImageModel] = []
+        @Binding var images: [ImageModel]
         @State private var showResult = false
         
         var body: some View {
@@ -64,38 +91,31 @@ struct ContentView: View {
                     ForEach(images.indices,id:\.self) { index in
                         let model = images[index]
                         let img = Image( uiImage: model.name != "" ? UIImage(named: model.name)! : UIImage())
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.white, lineWidth: 2))
-                        .padding(2)
-                        .overlay(Circle().strokeBorder(Color.black.opacity(0.1)))
-                        .shadow(radius: 3)
-                        .padding(4)
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                            .padding(2)
+                            .overlay(Circle().strokeBorder(Color.black.opacity(0.1)))
+                            .shadow(radius: 3)
+                            .padding(4)
+                        
+                        Rectangle()
+                            .fill(Color.clear)
+                            .frame(width: 50, height: 50)
+                            .overlay(img).position(model.pos).onTapGesture(count:2){
+                                images.remove(at: index)
+                            }
+                    }
                     
-                     Rectangle()
-                        .fill(Color.clear)
-                        .frame(width: 50, height: 50)
-                        .overlay(img).position(model.pos).onTapGesture(count:2){
-                            images.remove(at: index)
-                        }
-                }
-                
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)
                 .background(Color(UIColor.systemBackground))
                 .border(Color.gray)
                 .onDrop(of: [UTType.text], delegate: dropDelegate)
             }
-                VStack{
-                    
-                    Text( showResult ? "\(images.count)":"?").font(.title)
-                    Button("ShowResult"){
-                        showResult.toggle()
-                    }.padding()
-                    
-                }
-            
+                
+                
             }}
     }
     
@@ -123,11 +143,11 @@ struct ContentView: View {
         }
         
         func dropEntered(info: DropInfo) {
-           // Sound(named: "Morse")?.play()
+            // Sound(named: "Morse")?.play()
         }
         
         func performDrop(info: DropInfo) -> Bool {
-           // Sound(named: "Submarine")?.play()
+            // Sound(named: "Submarine")?.play()
             
             if let item = info.itemProviders(for: [UTType.text]).first {
                 item.loadObject(ofClass: NSString.self){
@@ -135,7 +155,7 @@ struct ContentView: View {
                     if let strData = strData as? String {
                         let model = ImageModel(id: images.count+1, pos:info.location,name:strData)
                         self.images.append(model)
-
+                        
                     }
                 }
                 
@@ -144,18 +164,46 @@ struct ContentView: View {
             } else {
                 return false
             }
-
+            
         }
         
         func dropUpdated(info: DropInfo) -> DropProposal? {
-                        
+            
             return nil
         }
         
         func dropExited(info: DropInfo) {
-           
+            
         }
         
+    }
+}
+
+
+import UIKit
+class AppDelegate: NSObject, UIApplicationDelegate {
+    var interfaceOrientations:UIInterfaceOrientationMask = .landscape{
+        didSet{
+            //强制设置成竖屏
+            if interfaceOrientations == .portrait{
+                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
+                                          forKey: "orientation")
+            }
+            //强制设置成横屏
+            else if !interfaceOrientations.contains(.portrait){
+                UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
+                                          forKey: "orientation")
+            }
+        }
+    }
+    //返回当前界面支持的旋转方向
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor
+                     window: UIWindow?)-> UIInterfaceOrientationMask {
+        return interfaceOrientations
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        return true
     }
 }
 

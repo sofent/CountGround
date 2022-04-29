@@ -19,13 +19,8 @@ struct ContentView: View {
             
             VStack {
                 DragableImage(name: img1url)
-                
-                DragableImage(name: img3url)
-            }
-            
-            VStack {
                 DragableImage(name: img2url)
-                
+                DragableImage(name: img3url)
                 DragableImage(name: img4url)
             }
             
@@ -57,30 +52,47 @@ struct ContentView: View {
     }
     struct DroppableArea: View {
         @State private var images: [ImageModel] = []
-        @State private var active = 0
+        @State private var showResult = false
         
         var body: some View {
-            let dropDelegate = MyDropDelegate(images: $images, active: $active)
+            let dropDelegate = MyDropDelegate(images: $images)
             
             return HStack{ GeometryReader { geometry in
                 ZStack {
-                ForEach(images) { model in
-                    let img = Image( uiImage: model.name != "" ? UIImage(named: model.name)! : UIImage())
+                    ForEach(images.indices,id:\.self) { index in
+                        let model = images[index]
+                        let img = Image( uiImage: model.name != "" ? UIImage(named: model.name)! : UIImage())
                         .resizable()
                         .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                        .padding(2)
+                        .overlay(Circle().strokeBorder(Color.black.opacity(0.1)))
+                        .shadow(radius: 3)
+                        .padding(4)
                     
                      Rectangle()
                         .fill(Color.clear)
                         .frame(width: 50, height: 50)
-                        .overlay(img).position(model.pos)
+                        .overlay(img).position(model.pos).onTapGesture(count:2){
+                            images.remove(at: index)
+                        }
                 }
                 
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)
-                .background(Color.gray)
+                .background(Color(UIColor.systemBackground))
+                .border(Color.gray)
                 .onDrop(of: [UTType.text], delegate: dropDelegate)
             }
-                Text("\(images.count)").font(.title)
+                VStack{
+                    
+                    Text( showResult ? "\(images.count)":"?").font(.title)
+                    Button("ShowResult"){
+                        showResult.toggle()
+                    }.padding()
+                    
+                }
             
             }}
     }
@@ -103,7 +115,6 @@ struct ContentView: View {
     
     struct MyDropDelegate: DropDelegate {
         @Binding var images: [ImageModel]
-        @Binding var active: Int
         
         func validateDrop(info: DropInfo) -> Bool {
             return info.hasItemsConforming(to: [UTType.text])
@@ -138,28 +149,14 @@ struct ContentView: View {
         }
         
         func dropUpdated(info: DropInfo) -> DropProposal? {
-            self.active = getGridPosition(location: info.location)
                         
             return nil
         }
         
         func dropExited(info: DropInfo) {
-            self.active = 0
+           
         }
         
-        func getGridPosition(location: CGPoint) -> Int {
-            if location.x > 150 && location.y > 150 {
-                return 4
-            } else if location.x > 150 && location.y < 150 {
-                return 3
-            } else if location.x < 150 && location.y > 150 {
-                return 2
-            } else if location.x < 150 && location.y < 150 {
-                return 1
-            } else {
-                return 0
-            }
-        }
     }
 }
 

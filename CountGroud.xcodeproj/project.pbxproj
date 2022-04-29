@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33D0A1CA281B8315001467EF /* CountGroudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1C9281B8315001467EF /* CountGroudApp.swift */; };
+		33D0A1CA281B8315001467EF /* CountGroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1C9281B8315001467EF /* CountGroundApp.swift */; };
 		33D0A1CC281B8315001467EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1CB281B8315001467EF /* ContentView.swift */; };
 		33D0A1CE281B8316001467EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D0A1CD281B8316001467EF /* Assets.xcassets */; };
 		33D0A1D1281B8316001467EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D0A1D0281B8316001467EF /* Preview Assets.xcassets */; };
 		33D0A1DB281B8317001467EF /* CountGroudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1DA281B8317001467EF /* CountGroudTests.swift */; };
 		33D0A1E5281B8317001467EF /* CountGroudUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1E4281B8317001467EF /* CountGroudUITests.swift */; };
 		33D0A1E7281B8317001467EF /* CountGroudUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1E6281B8317001467EF /* CountGroudUITestsLaunchTests.swift */; };
+		33D0A1F9281BB68B001467EF /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 33D0A1F6281B9DB4001467EF /* Images */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,16 +35,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		33D0A1C6281B8315001467EF /* CountGroud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountGroud.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		33D0A1C9281B8315001467EF /* CountGroudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountGroudApp.swift; sourceTree = "<group>"; };
+		33D0A1C6281B8315001467EF /* or.sofent.CountGround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = or.sofent.CountGround.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33D0A1C9281B8315001467EF /* CountGroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountGroundApp.swift; sourceTree = "<group>"; };
 		33D0A1CB281B8315001467EF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		33D0A1CD281B8316001467EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33D0A1D0281B8316001467EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		33D0A1D6281B8317001467EF /* CountGroudTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountGroudTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		33D0A1D6281B8317001467EF /* CountGroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountGroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D0A1DA281B8317001467EF /* CountGroudTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountGroudTests.swift; sourceTree = "<group>"; };
-		33D0A1E0281B8317001467EF /* CountGroudUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountGroudUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		33D0A1E0281B8317001467EF /* CountGroundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountGroundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D0A1E4281B8317001467EF /* CountGroudUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountGroudUITests.swift; sourceTree = "<group>"; };
 		33D0A1E6281B8317001467EF /* CountGroudUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountGroudUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		33D0A1F6281B9DB4001467EF /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Images; path = CountGround/Images; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,8 @@
 		33D0A1BD281B8315001467EF = {
 			isa = PBXGroup;
 			children = (
-				33D0A1C8281B8315001467EF /* CountGroud */,
+				33D0A1F6281B9DB4001467EF /* Images */,
+				33D0A1C8281B8315001467EF /* CountGround */,
 				33D0A1D9281B8317001467EF /* CountGroudTests */,
 				33D0A1E3281B8317001467EF /* CountGroudUITests */,
 				33D0A1C7281B8315001467EF /* Products */,
@@ -84,22 +87,22 @@
 		33D0A1C7281B8315001467EF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				33D0A1C6281B8315001467EF /* CountGroud.app */,
-				33D0A1D6281B8317001467EF /* CountGroudTests.xctest */,
-				33D0A1E0281B8317001467EF /* CountGroudUITests.xctest */,
+				33D0A1C6281B8315001467EF /* or.sofent.CountGround.app */,
+				33D0A1D6281B8317001467EF /* CountGroundTests.xctest */,
+				33D0A1E0281B8317001467EF /* CountGroundUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		33D0A1C8281B8315001467EF /* CountGroud */ = {
+		33D0A1C8281B8315001467EF /* CountGround */ = {
 			isa = PBXGroup;
 			children = (
-				33D0A1C9281B8315001467EF /* CountGroudApp.swift */,
+				33D0A1C9281B8315001467EF /* CountGroundApp.swift */,
 				33D0A1CB281B8315001467EF /* ContentView.swift */,
 				33D0A1CD281B8316001467EF /* Assets.xcassets */,
 				33D0A1CF281B8316001467EF /* Preview Content */,
 			);
-			path = CountGroud;
+			path = CountGround;
 			sourceTree = "<group>";
 		};
 		33D0A1CF281B8316001467EF /* Preview Content */ = {
@@ -130,9 +133,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		33D0A1C5281B8315001467EF /* CountGroud */ = {
+		33D0A1C5281B8315001467EF /* CountGround */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33D0A1EA281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGroud" */;
+			buildConfigurationList = 33D0A1EA281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGround" */;
 			buildPhases = (
 				33D0A1C2281B8315001467EF /* Sources */,
 				33D0A1C3281B8315001467EF /* Frameworks */,
@@ -142,14 +145,14 @@
 			);
 			dependencies = (
 			);
-			name = CountGroud;
+			name = CountGround;
 			productName = CountGroud;
-			productReference = 33D0A1C6281B8315001467EF /* CountGroud.app */;
+			productReference = 33D0A1C6281B8315001467EF /* or.sofent.CountGround.app */;
 			productType = "com.apple.product-type.application";
 		};
-		33D0A1D5281B8317001467EF /* CountGroudTests */ = {
+		33D0A1D5281B8317001467EF /* CountGroundTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33D0A1ED281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGroudTests" */;
+			buildConfigurationList = 33D0A1ED281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGroundTests" */;
 			buildPhases = (
 				33D0A1D2281B8317001467EF /* Sources */,
 				33D0A1D3281B8317001467EF /* Frameworks */,
@@ -160,14 +163,14 @@
 			dependencies = (
 				33D0A1D8281B8317001467EF /* PBXTargetDependency */,
 			);
-			name = CountGroudTests;
+			name = CountGroundTests;
 			productName = CountGroudTests;
-			productReference = 33D0A1D6281B8317001467EF /* CountGroudTests.xctest */;
+			productReference = 33D0A1D6281B8317001467EF /* CountGroundTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		33D0A1DF281B8317001467EF /* CountGroudUITests */ = {
+		33D0A1DF281B8317001467EF /* CountGroundUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33D0A1F0281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGroudUITests" */;
+			buildConfigurationList = 33D0A1F0281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGroundUITests" */;
 			buildPhases = (
 				33D0A1DC281B8317001467EF /* Sources */,
 				33D0A1DD281B8317001467EF /* Frameworks */,
@@ -178,9 +181,9 @@
 			dependencies = (
 				33D0A1E2281B8317001467EF /* PBXTargetDependency */,
 			);
-			name = CountGroudUITests;
+			name = CountGroundUITests;
 			productName = CountGroudUITests;
-			productReference = 33D0A1E0281B8317001467EF /* CountGroudUITests.xctest */;
+			productReference = 33D0A1E0281B8317001467EF /* CountGroundUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -219,9 +222,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				33D0A1C5281B8315001467EF /* CountGroud */,
-				33D0A1D5281B8317001467EF /* CountGroudTests */,
-				33D0A1DF281B8317001467EF /* CountGroudUITests */,
+				33D0A1C5281B8315001467EF /* CountGround */,
+				33D0A1D5281B8317001467EF /* CountGroundTests */,
+				33D0A1DF281B8317001467EF /* CountGroundUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33D0A1F9281BB68B001467EF /* Images in Resources */,
 				33D0A1D1281B8316001467EF /* Preview Assets.xcassets in Resources */,
 				33D0A1CE281B8316001467EF /* Assets.xcassets in Resources */,
 			);
@@ -258,7 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33D0A1CC281B8315001467EF /* ContentView.swift in Sources */,
-				33D0A1CA281B8315001467EF /* CountGroudApp.swift in Sources */,
+				33D0A1CA281B8315001467EF /* CountGroundApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,12 +288,12 @@
 /* Begin PBXTargetDependency section */
 		33D0A1D8281B8317001467EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 33D0A1C5281B8315001467EF /* CountGroud */;
+			target = 33D0A1C5281B8315001467EF /* CountGround */;
 			targetProxy = 33D0A1D7281B8317001467EF /* PBXContainerItemProxy */;
 		};
 		33D0A1E2281B8317001467EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 33D0A1C5281B8315001467EF /* CountGroud */;
+			target = 33D0A1C5281B8315001467EF /* CountGround */;
 			targetProxy = 33D0A1E1281B8317001467EF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -416,13 +420,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CountGroud/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CountGround/Preview Content\"";
 				DEVELOPMENT_TEAM = RCBY5FRZG5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -430,8 +435,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = or.sofent.CountGroud;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = or.sofent.CountGround;
+				PRODUCT_NAME = or.sofent.CountGround;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -445,13 +450,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CountGroud/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CountGround/Preview Content\"";
 				DEVELOPMENT_TEAM = RCBY5FRZG5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -459,8 +465,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = or.sofent.CountGroud;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = or.sofent.CountGround;
+				PRODUCT_NAME = or.sofent.CountGround;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -555,7 +561,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		33D0A1EA281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGroud" */ = {
+		33D0A1EA281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGround" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				33D0A1EB281B8317001467EF /* Debug */,
@@ -564,7 +570,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		33D0A1ED281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGroudTests" */ = {
+		33D0A1ED281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGroundTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				33D0A1EE281B8317001467EF /* Debug */,
@@ -573,7 +579,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		33D0A1F0281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGroudUITests" */ = {
+		33D0A1F0281B8317001467EF /* Build configuration list for PBXNativeTarget "CountGroundUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				33D0A1F1281B8317001467EF /* Debug */,

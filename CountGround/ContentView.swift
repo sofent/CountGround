@@ -130,15 +130,12 @@ struct ContentView: View {
            // Sound(named: "Submarine")?.play()
             
             if let item = info.itemProviders(for: [UTType.text]).first {
-    
-                item.loadItem(forTypeIdentifier: UTType.text.identifier, options: nil) { (strData, error) in
-                    DispatchQueue.main.async {
-                        
-                        if let strData = strData as? Data {
-                            let model = ImageModel(id: images.count+1, pos:info.location,name:String(data: strData, encoding: .utf8 )!)
-                            self.images.append(model)
+                item.loadObject(ofClass: NSString.self){
+                    (strData, error) in
+                    if let strData = strData as? String {
+                        let model = ImageModel(id: images.count+1, pos:info.location,name:strData)
+                        self.images.append(model)
 
-                        }
                     }
                 }
                 

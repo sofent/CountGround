@@ -13,7 +13,7 @@ struct ContentView : View{
         NavigationView{
             VStack{
                 NavigationLink("Count Ground", destination:  CountView()).padding()
-                NavigationLink("Four Digit", destination:  FourDigitMinusView()).padding()
+                NavigationLink("Minus Digit", destination:  DigitMinusView()).padding()
             }
             Text("Welcome")
         }

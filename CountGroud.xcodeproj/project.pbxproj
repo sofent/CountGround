@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3353E769281C3D710001F12A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E768281C3D710001F12A /* ContentView.swift */; };
+		3353E76B281C48E20001F12A /* FourDigitMinus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E76A281C48E20001F12A /* FourDigitMinus.swift */; };
+		3353E76D281CC75E0001F12A /* TapViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E76C281CC75E0001F12A /* TapViewModifier.swift */; };
 		33D0A1CA281B8315001467EF /* CountGroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1C9281B8315001467EF /* CountGroundApp.swift */; };
-		33D0A1CC281B8315001467EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1CB281B8315001467EF /* ContentView.swift */; };
+		33D0A1CC281B8315001467EF /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1CB281B8315001467EF /* CountView.swift */; };
 		33D0A1CE281B8316001467EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D0A1CD281B8316001467EF /* Assets.xcassets */; };
 		33D0A1D1281B8316001467EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D0A1D0281B8316001467EF /* Preview Assets.xcassets */; };
 		33D0A1DB281B8317001467EF /* CountGroudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1DA281B8317001467EF /* CountGroudTests.swift */; };
@@ -35,9 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3353E768281C3D710001F12A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3353E76A281C48E20001F12A /* FourDigitMinus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourDigitMinus.swift; sourceTree = "<group>"; };
+		3353E76C281CC75E0001F12A /* TapViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapViewModifier.swift; sourceTree = "<group>"; };
 		33D0A1C6281B8315001467EF /* or.sofent.CountGround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = or.sofent.CountGround.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D0A1C9281B8315001467EF /* CountGroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountGroundApp.swift; sourceTree = "<group>"; };
-		33D0A1CB281B8315001467EF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		33D0A1CB281B8315001467EF /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
 		33D0A1CD281B8316001467EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33D0A1D0281B8316001467EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		33D0A1D6281B8317001467EF /* CountGroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountGroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,9 +106,12 @@
 			children = (
 				33D0A1FA281BDA48001467EF /* Info.plist */,
 				33D0A1C9281B8315001467EF /* CountGroundApp.swift */,
-				33D0A1CB281B8315001467EF /* ContentView.swift */,
+				33D0A1CB281B8315001467EF /* CountView.swift */,
 				33D0A1CD281B8316001467EF /* Assets.xcassets */,
 				33D0A1CF281B8316001467EF /* Preview Content */,
+				3353E768281C3D710001F12A /* ContentView.swift */,
+				3353E76A281C48E20001F12A /* FourDigitMinus.swift */,
+				3353E76C281CC75E0001F12A /* TapViewModifier.swift */,
 			);
 			path = CountGround;
 			sourceTree = "<group>";
@@ -263,8 +272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33D0A1CC281B8315001467EF /* ContentView.swift in Sources */,
+				3353E76B281C48E20001F12A /* FourDigitMinus.swift in Sources */,
+				3353E76D281CC75E0001F12A /* TapViewModifier.swift in Sources */,
+				33D0A1CC281B8315001467EF /* CountView.swift in Sources */,
 				33D0A1CA281B8315001467EF /* CountGroundApp.swift in Sources */,
+				3353E769281C3D710001F12A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +439,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CountGround/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CountGround;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -457,6 +470,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CountGround/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CountGround;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

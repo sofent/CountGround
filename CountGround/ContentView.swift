@@ -1,214 +1,39 @@
 //
 //  ContentView.swift
-//  CountGroud
+//  CountGround
 //
-//  Created by sofent on 2022/4/29.
+//  Created by 衡阵 on 2022/4/29.
 //
 
 import SwiftUI
-import UniformTypeIdentifiers
-import UIKit
 
-struct ContentView: View {
-    let img1url = "Images/grape"
-    let img2url = "Images/banana"
-    let img3url = "Images/peach"
-    let img4url = "Images/kiwi"
-    @State var showResult = false
-    @State var images1 :[ImageModel] = []
-    @State var images2 :[ImageModel] = []
+struct ContentView : View{
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
-    var body: some View {
-        HStack {
-            
-            VStack {
-                DragableImage(name: img1url)
-                DragableImage(name: img2url)
-                DragableImage(name: img3url)
-                DragableImage(name: img4url)
-            }
-            .padding()
-            .border(Color.orange)
+    var body: some View{
+        NavigationView{
             VStack{
-                DroppableArea(images: $images1)
-                Text("\(images1.count)").font(.title)
+                NavigationLink("Count Ground", destination:  CountView()).padding()
+                NavigationLink("Four Digit", destination:  FourDigitMinusView()).padding()
             }
-            Text("+").font(.largeTitle)
-            VStack{
-                DroppableArea(images: $images2)
-                Text("\(images2.count)").font(.title)
-            }
-            VStack{
-                
-                Text( showResult ? "\(images1.count+images2.count)":"?").font(.largeTitle)
-                Button("ShowResult"){
-                    showResult.toggle()
-                }.padding()
-                
-            }
-        }.padding(40)
-            .onAppear() {
-                
-                appDelegate.interfaceOrientations = [.landscapeLeft]
-            }.onDisappear() {
-                //appDelegate.interfaceOrientations = .portrait
-            }
-        
-    }
-    
-    struct DragableImage: View {
-        let name: String
-        
-        var body: some View {
-            Image(uiImage: name != "" ? UIImage(named: name)! : UIImage())
-                .resizable()
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.white, lineWidth: 2))
-                .padding(2)
-                .overlay(Circle().strokeBorder(Color.black.opacity(0.1)))
-                .shadow(radius: 3)
-                .padding(4)
-                .onDrag { return NSItemProvider(object: self.name as NSString) }
+            Text("Welcome")
         }
-    }
-    struct ImageModel:Identifiable{
-        var id: Int
-        
-        var pos: CGPoint
-        var name: String
-    }
-    struct DroppableArea: View {
-        @Binding var images: [ImageModel]
-        @State private var showResult = false
-        
-        var body: some View {
-            let dropDelegate = MyDropDelegate(images: $images)
+        .phoneOnlyStackNavigationView()
+        .onAppear() {
             
-            return HStack{ GeometryReader { geometry in
-                ZStack {
-                    ForEach(images.indices,id:\.self) { index in
-                        let model = images[index]
-                        let img = Image( uiImage: model.name != "" ? UIImage(named: model.name)! : UIImage())
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 2))
-                            .padding(2)
-                            .overlay(Circle().strokeBorder(Color.black.opacity(0.1)))
-                            .shadow(radius: 3)
-                            .padding(4)
-                        
-                        Rectangle()
-                            .fill(Color.clear)
-                            .frame(width: 50, height: 50)
-                            .overlay(img).position(model.pos).onTapGesture(count:2){
-                                images.remove(at: index)
-                            }
-                    }
-                    
-                }
-                .frame(width: geometry.size.width, height: geometry.size.height)
-                .background(Color(UIColor.systemBackground))
-                .border(Color.gray)
-                .onDrop(of: [UTType.text], delegate: dropDelegate)
-            }
-                
-                
-            }}
-    }
-    
-    struct GridCell: View {
-        let active: Bool
-        let name: String?
-        
-        var body: some View {
-            let img = Image( uiImage: name != nil ? UIImage(named: name!)! : UIImage())
-                .resizable()
-                .frame(width: 150, height: 150)
-            
-            return Rectangle()
-                .fill(self.active ? Color.green : Color.clear)
-                .frame(width: 150, height: 150)
-                .overlay(img)
+            appDelegate.interfaceOrientations = [.landscapeLeft]
+        }.onDisappear() {
+            appDelegate.interfaceOrientations = .portrait
         }
-    }
-    
-    struct MyDropDelegate: DropDelegate {
-        @Binding var images: [ImageModel]
-        
-        func validateDrop(info: DropInfo) -> Bool {
-            return info.hasItemsConforming(to: [UTType.text])
-        }
-        
-        func dropEntered(info: DropInfo) {
-            // Sound(named: "Morse")?.play()
-        }
-        
-        func performDrop(info: DropInfo) -> Bool {
-            // Sound(named: "Submarine")?.play()
-            
-            if let item = info.itemProviders(for: [UTType.text]).first {
-                item.loadObject(ofClass: NSString.self){
-                    (strData, error) in
-                    if let strData = strData as? String {
-                        let model = ImageModel(id: images.count+1, pos:info.location,name:strData)
-                        self.images.append(model)
-                        
-                    }
-                }
-                
-                return true
-                
-            } else {
-                return false
-            }
-            
-        }
-        
-        func dropUpdated(info: DropInfo) -> DropProposal? {
-            
-            return nil
-        }
-        
-        func dropExited(info: DropInfo) {
-            
-        }
-        
     }
 }
 
 
-import UIKit
-class AppDelegate: NSObject, UIApplicationDelegate {
-    var interfaceOrientations:UIInterfaceOrientationMask = .landscape{
-        didSet{
-            //强制设置成竖屏
-            if interfaceOrientations == .portrait{
-                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
-                                          forKey: "orientation")
-            }
-            //强制设置成横屏
-            else if !interfaceOrientations.contains(.portrait){
-                UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue,
-                                          forKey: "orientation")
-            }
+extension View {
+    func phoneOnlyStackNavigationView() -> some View {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return AnyView(self.navigationViewStyle(StackNavigationViewStyle()))
+        } else {
+            return AnyView(self)
         }
-    }
-    //返回当前界面支持的旋转方向
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor
-                     window: UIWindow?)-> UIInterfaceOrientationMask {
-        return interfaceOrientations
-    }
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        return true
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

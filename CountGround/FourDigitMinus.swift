@@ -183,7 +183,7 @@ struct DigitInputField:View{
                             self.borrow = false
                         }
                     }
-                    .disabled(!editable)
+                    .disabled(!editable).textSelection(.disabled)
             if firstline && !editable  {
                 Text("\(leftValue)")
                 

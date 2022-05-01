@@ -26,7 +26,7 @@ struct DigitMinusView :View{
     var body: some View{
         HStack{
             Spacer()
-            VStack{
+            VStack(spacing:10){
                 if showCheck {
                     VStack{
                         if opt == 2{
@@ -63,7 +63,7 @@ struct DigitMinusView :View{
                    
                     
                 }.frame(width: CGFloat((numOfDigit+4))*50,alignment: .trailing)
-                HStack{
+                HStack(spacing: 15){
                     Spacer()
                     Button("Solve"){
                         editable.toggle()
@@ -71,14 +71,15 @@ struct DigitMinusView :View{
                         if solving {
                             result.focus = Field(rawValue: opt == 2 ? numOfDigit : (numOfDigit+1)) ?? .four
                         }
-                    }.padding()
+                    }.buttonStyle(.borderedProminent)
                     Text("Check").tapRecognizer(tapSensitivity: 0.3, singleTapAction: {
                         showCheck.toggle()
                         showResult = false
                     }, doubleTapAction: {
                         showResult = true
                         showCheck = true
-                    }).padding()
+                    }).background(.regularMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
                     Button("Reset"){
                         editable = true
                         first.focus = .one
@@ -88,12 +89,13 @@ struct DigitMinusView :View{
                         first.Value=0
                         second.Value=0
                         result.Value=0
-                    }.padding()
+                    }.buttonStyle(.borderedProminent)
                     Spacer()
                     
                 }.padding(5)
                 
             }
+            
             Spacer()
             VStack{
                
@@ -130,5 +132,6 @@ struct DigitMinusView :View{
 struct DigitMinus_Previews: PreviewProvider {
     static var previews: some View {
         DigitMinusView()
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }

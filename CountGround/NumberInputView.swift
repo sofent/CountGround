@@ -25,7 +25,7 @@ struct NumberInputView: View {
     @FocusState private var focus: Field?
     let text:String
     @Binding var editable :Bool
-    var firstline = false
+    var firstline = 0
     var desc = false
     
     
@@ -38,8 +38,10 @@ struct NumberInputView: View {
                 i in
                 let f=Field(rawValue: i+1) ?? .one
                 DigitInputField(numOfDigit:model.numOfDigit,index:f,value:$model.values[i],focus:_focus,firstline:firstline,desc: desc,editable: $editable)
+                
             }
-        }.padding().synchronize($model.focus,$focus)
+        }
+        .padding().synchronize($model.focus,$focus)
         
         
     }
@@ -52,14 +54,14 @@ struct DigitInputField:View{
     @Binding var value:String
     @FocusState var focus:Field?
     @State var leftValue:String=""
-    var firstline = false
+    var firstline = 0
     var desc = false
     @State var borrow = false
     @Binding var editable :Bool
     @State var oldvalue = ""
     var body: some View {
         VStack{
-            if firstline && !editable {
+            if (firstline == 3 && !editable) || (firstline == 1 && editable) {
                 Text(borrow ? "①" : "•").foregroundColor(borrow ? Color.red : Color.black).onTapGesture {
                     if value == ""{
                         return
@@ -105,13 +107,13 @@ struct DigitInputField:View{
                         }
                     }
                     .disabled(!editable).textSelection(.disabled)
-            if firstline && !editable  {
+            if (firstline&0x2) != 0 && !editable  {
                 Text("\(leftValue)")
                 
             }
         }
         .onAppear{
-            if firstline {
+            if firstline==1 {
                 DispatchQueue.main.asyncAfter(deadline: .now()+1){
                     self.focus = .one
                 }}

@@ -98,31 +98,27 @@ struct DigitMinusView :View{
             
             Spacer()
             VStack{
-               
-                Picker(selection: $numOfDigit) {
-                    ForEach(Field.allCases,id:\.rawValue) { field in
-                        Text(String(field.rawValue)).tag(field.rawValue)
-                    }
-                } label: {
-                    Text("选择位数")
-                }
+                Text("调整位数")
+                Stepper("\(numOfDigit)", value: $numOfDigit, in: 1...8)
+                
                 .onChange(of: numOfDigit){newValue in
                     first.numOfDigit=newValue
                     second.numOfDigit=newValue
                     result.numOfDigit = opt==2 ? newValue : (newValue+1)
                 }
-                Text("选择位数")
+                Text("选择操作")
                 Picker(selection: $opt) {
                     ForEach(Opt.allCases,id:\.rawValue) { opt in
                         Text(optText[opt.rawValue-1]).tag(opt.rawValue)
                     }
                 } label: {
                     Text("选择操作")
-                }.onChange(of: opt){newValue in
+                }.pickerStyle(.segmented)
+                .onChange(of: opt){newValue in
                     result.numOfDigit = newValue == 1 ? (numOfDigit+1) : numOfDigit
                 }
-                Text("选择操作")
-            }.frame(width: 75).padding(10)
+              
+            }.frame(width: 150).padding(10)
         }
     }
 }

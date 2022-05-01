@@ -78,6 +78,7 @@ struct CountView: View {
         
         var pos: CGPoint
         var name: String
+        var offset: CGSize = .zero
     }
     struct DroppableArea: View {
         @Binding var images: [ImageModel]
@@ -105,7 +106,14 @@ struct CountView: View {
                             .frame(width: 50, height: 50)
                             .overlay(img).position(model.pos).onTapGesture(count:2){
                                 images.remove(at: index)
-                            }
+                            }.offset(images[index].offset)
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { images[index].offset = $0.translation }
+                                    .onEnded { nv in images[index].offset = .zero
+                                        images[index].pos = nv.location
+                                    }
+                            )
                     }
                     
                 }

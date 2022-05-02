@@ -23,6 +23,25 @@ struct DigitMinusView :View{
     @ObservedObject var result = NumberInputModel(5)
     @State var showCheck = false
     @State var showResult = false
+    fileprivate func reset() {
+        editable = true
+        first.focus = .one
+        solving = false
+        showCheck = false
+        showResult = false
+        first.Value=0
+        second.Value=0
+        result.Value=0
+    }
+    
+    fileprivate func solve() {
+        editable.toggle()
+        solving.toggle()
+        if solving {
+            result.focus = Field(rawValue: opt == 2 ? numOfDigit : (numOfDigit+1)) ?? .four
+        }
+    }
+    
     var body: some View{
         HStack{
             Spacer()
@@ -66,11 +85,7 @@ struct DigitMinusView :View{
                 HStack(spacing: 15){
                     Spacer()
                     Button("Solve"){
-                        editable.toggle()
-                        solving.toggle()
-                        if solving {
-                            result.focus = Field(rawValue: opt == 2 ? numOfDigit : (numOfDigit+1)) ?? .four
-                        }
+                        solve()
                     }.buttonStyle(.borderedProminent)
                     Text("Check").tapRecognizer(tapSensitivity: 0.3, singleTapAction: {
                         showCheck.toggle()
@@ -81,14 +96,7 @@ struct DigitMinusView :View{
                     }).background(.regularMaterial)
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                     Button("Reset"){
-                        editable = true
-                        first.focus = .one
-                        solving = false
-                        showCheck = false
-                        showResult = false
-                        first.Value=0
-                        second.Value=0
-                        result.Value=0
+                        reset()
                     }.buttonStyle(.borderedProminent)
                     Spacer()
                     
@@ -117,13 +125,28 @@ struct DigitMinusView :View{
                 .onChange(of: opt){newValue in
                     result.numOfDigit = newValue == 1 ? (numOfDigit+1) : numOfDigit
                 }
+                
+                Button("自动出题"){
+                    let minValue = (10 ^^ (numOfDigit-1)) + 1
+                    let maxValue = 10 ^^ numOfDigit
+                    let firstValue = Int.random(in: minValue ..< maxValue)
+                    let secondValue = opt==2 ? Int.random(in: minValue ..< firstValue) : Int.random(in: minValue ..< maxValue)
+                    self.reset()
+                    first.Value=firstValue
+                    second.Value=secondValue
+                    solve()
+                }.buttonStyle(.bordered).padding(.vertical)
               
             }.frame(width: 150).padding(10)
         }
     }
 }
 
-
+precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
+infix operator ^^ : PowerPrecedence
+func ^^ (radix: Int, power: Int) -> Int {
+    return Int(pow(Double(radix), Double(power)))
+}
 
 struct DigitMinus_Previews: PreviewProvider {
     static var previews: some View {

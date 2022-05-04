@@ -23,6 +23,11 @@ struct DigitMinusView :View{
     @ObservedObject var result = NumberInputModel(5)
     @State var showCheck = false
     @State var showResult = false
+    @State var isRotated = true
+    var animation: Animation {
+        Animation.linear
+            .repeatCount(5, autoreverses: false)
+    }
     fileprivate func reset() {
         editable = true
         first.focus = .one
@@ -62,7 +67,9 @@ struct DigitMinusView :View{
                             }
                             
                         }
-                    }.frame(width: CGFloat((numOfDigit+2))*50).animation(.easeInOut,value: showCheck)
+                    }.frame(width: CGFloat((numOfDigit+2))*50)
+                        .rotationEffect(Angle.degrees(isRotated ? 30 : 0))
+                        .animation(animation,value: isRotated)
                 }
                 VStack{
                     HStack{
@@ -91,11 +98,17 @@ struct DigitMinusView :View{
                         withAnimation{
                             showCheck.toggle()
                             showResult = false
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.2){withAnimation{
+                                isRotated.toggle()}
+                            }
                         }
                     }, doubleTapAction: {
                         withAnimation{
                             showResult = true
                             showCheck = true
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.2){withAnimation{
+                                isRotated.toggle()}
+                            }
                         }
                     }).background(.regularMaterial)
                         .clipShape(RoundedRectangle(cornerRadius: 5))

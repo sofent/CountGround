@@ -62,7 +62,7 @@ struct DigitMinusView :View{
                             }
                             
                         }
-                    }.frame(width: CGFloat((numOfDigit+2))*50)
+                    }.frame(width: CGFloat((numOfDigit+2))*50).animation(.easeInOut,value: showCheck)
                 }
                 VStack{
                     HStack{
@@ -73,13 +73,13 @@ struct DigitMinusView :View{
                         Spacer()
                         NumberInputView(model:second,text:opt == 2 ? "-" : "+",editable:$editable).frame(alignment: .trailing)
                     }.frame(alignment: .trailing).border(Color.red)
-               
+                    
                     Divider()
                     HStack{
                         Spacer()
                         NumberInputView(model:result,text:"=",editable:$solving,firstline: opt == 2 ? 0 : 1 ,desc: true).frame(alignment: .trailing)
                     }.frame(alignment: .trailing).border(Color.red)
-                   
+                    
                     
                 }.frame(width: CGFloat((numOfDigit+4))*50,alignment: .trailing)
                 HStack(spacing: 15){
@@ -88,11 +88,15 @@ struct DigitMinusView :View{
                         solve()
                     }.buttonStyle(.borderedProminent)
                     Text("Check").tapRecognizer(tapSensitivity: 0.3, singleTapAction: {
-                        showCheck.toggle()
-                        showResult = false
+                        withAnimation{
+                            showCheck.toggle()
+                            showResult = false
+                        }
                     }, doubleTapAction: {
-                        showResult = true
-                        showCheck = true
+                        withAnimation{
+                            showResult = true
+                            showCheck = true
+                        }
                     }).background(.regularMaterial)
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                     Button("Reset"){
@@ -109,11 +113,11 @@ struct DigitMinusView :View{
                 Text("调整位数")
                 Stepper("\(numOfDigit)", value: $numOfDigit, in: 1...8)
                 
-                .onChange(of: numOfDigit){newValue in
-                    first.numOfDigit=newValue
-                    second.numOfDigit=newValue
-                    result.numOfDigit = opt==2 ? newValue : (newValue+1)
-                }
+                    .onChange(of: numOfDigit){newValue in
+                        first.numOfDigit=newValue
+                        second.numOfDigit=newValue
+                        result.numOfDigit = opt==2 ? newValue : (newValue+1)
+                    }
                 Text("选择操作")
                 Picker(selection: $opt) {
                     ForEach(Opt.allCases,id:\.rawValue) { opt in
@@ -122,9 +126,9 @@ struct DigitMinusView :View{
                 } label: {
                     Text("选择操作")
                 }.pickerStyle(.segmented)
-                .onChange(of: opt){newValue in
-                    result.numOfDigit = newValue == 1 ? (numOfDigit+1) : numOfDigit
-                }
+                    .onChange(of: opt){newValue in
+                        result.numOfDigit = newValue == 1 ? (numOfDigit+1) : numOfDigit
+                    }
                 
                 Button("自动出题"){
                     let minValue = (10 ^^ (numOfDigit-1)) + 1
@@ -136,7 +140,7 @@ struct DigitMinusView :View{
                     second.Value=secondValue
                     solve()
                 }.buttonStyle(.bordered).padding(.vertical)
-              
+                
             }.frame(width: 150).padding(10)
         }
     }

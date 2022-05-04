@@ -29,11 +29,11 @@ struct ContentView : View{
 
 
 extension View {
-    func phoneOnlyStackNavigationView() -> some View {
+    @ViewBuilder func phoneOnlyStackNavigationView() -> some View {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return AnyView(self.navigationViewStyle(StackNavigationViewStyle()))
+             self.navigationViewStyle(.stack)
         } else {
-            return AnyView(self)
+             self
         }
     }
 }

@@ -18,9 +18,9 @@ struct DigitMinusView :View{
     @State var solving = false
     @State var numOfDigit = 4
     @State var opt = 1
-    @ObservedObject var first = NumberInputModel(4)
-    @ObservedObject var second = NumberInputModel(4)
-    @ObservedObject var result = NumberInputModel(5)
+     var first = NumberInputModel(4)
+     var second = NumberInputModel(4)
+     var result = NumberInputModel(5)
     @State var showCheck = false
     @State var showResult = false
     @State var isRotated = true
@@ -74,21 +74,25 @@ struct DigitMinusView :View{
                 VStack{
                     HStack{
                         Spacer()
-                        NumberInputView(model:first,text:" ",editable:$editable,firstline: opt == 2 ? 3 : 0 ).frame(alignment: .trailing)
+                        NumberInputView(text:" ",editable:$editable,firstline: opt == 2 ? 3 : 0 ).frame(alignment: .trailing).environmentObject(first)
                     }.frame(alignment: .trailing).border(Color.red)
                     HStack{
                         Spacer()
-                        NumberInputView(model:second,text:opt == 2 ? "-" : "+",editable:$editable).frame(alignment: .trailing)
+                        NumberInputView(text:opt == 2 ? "-" : "+",editable:$editable).frame(alignment: .trailing).environmentObject(second)
                     }.frame(alignment: .trailing).border(Color.red)
                     
                     Divider()
                     HStack{
                         Spacer()
-                        NumberInputView(model:result,text:"=",editable:$solving,firstline: opt == 2 ? 0 : 1 ,desc: true).frame(alignment: .trailing)
+                        NumberInputView(text:"=",editable:$solving,firstline: opt == 2 ? 0 : 1 ,desc: true).frame(alignment: .trailing).environmentObject(result)
                     }.frame(alignment: .trailing).border(Color.red)
                     
                     
-                }.frame(width: CGFloat((numOfDigit+4))*50,alignment: .trailing)
+                }.frame(width: CGFloat((numOfDigit+4))*50,alignment: .trailing).onAppear{
+                    DispatchQueue.main.asyncAfter(deadline: .now()+1){
+                        first.focus = .one
+                    }
+                }
                 HStack(spacing: 15){
                     Spacer()
                     Button("Solve"){

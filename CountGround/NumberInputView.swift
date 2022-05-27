@@ -20,7 +20,7 @@ enum Field:Int,CaseIterable {
 }
 
 struct NumberInputView: View {
-    @ObservedObject var model :NumberInputModel
+    @EnvironmentObject var model :NumberInputModel
   
     @FocusState private var focus: Field?
     let text:String
@@ -111,12 +111,6 @@ struct DigitInputField:View{
                 Text("\(leftValue)")
                 
             }
-        }
-        .onAppear{
-            if firstline==1 {
-                DispatchQueue.main.asyncAfter(deadline: .now()+1){
-                    self.focus = .one
-                }}
         }
     }
 }

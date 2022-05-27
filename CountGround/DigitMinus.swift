@@ -134,6 +134,7 @@ struct DigitMinusView :View{
                         first.numOfDigit=newValue
                         second.numOfDigit=newValue
                         result.numOfDigit = opt==2 ? newValue : (newValue+1)
+                        reset()
                     }
                 Text("选择操作")
                 Picker(selection: $opt) {

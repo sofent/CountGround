@@ -51,26 +51,6 @@ struct DigitMinusView :View{
         HStack{
             Spacer()
             VStack(spacing:10){
-                if showCheck {
-                    VStack{
-                        if opt == 2{
-                            Text( (result.Value == first.Value-second.Value) ? "恭喜你，答对了😊" : "很可惜，答错了😭")
-                        }else{
-                            Text( (result.Value == first.Value+second.Value) ? "恭喜你，答对了😊" : "很可惜，答错了😭")
-                        }
-                        
-                        if showResult {
-                            if opt == 2 {
-                                Text("正确答案是:\(first.Value-second.Value)")
-                            }else{
-                                Text("正确答案是:\(first.Value+second.Value)")
-                            }
-                            
-                        }
-                    }.frame(width: CGFloat((numOfDigit+2))*50)
-                        .rotationEffect(Angle.degrees(isRotated ? 30 : 0))
-                        .animation(animation,value: isRotated)
-                }
                 VStack{
                     HStack{
                         Spacer()
@@ -102,16 +82,18 @@ struct DigitMinusView :View{
                         withAnimation{
                             showCheck.toggle()
                             showResult = false
+                            isRotated = true
                             DispatchQueue.main.asyncAfter(deadline: .now()+0.2){withAnimation{
-                                isRotated.toggle()}
+                                isRotated = false }
                             }
                         }
                     }, doubleTapAction: {
                         withAnimation{
                             showResult = true
                             showCheck = true
+                            isRotated = true
                             DispatchQueue.main.asyncAfter(deadline: .now()+0.2){withAnimation{
-                                isRotated.toggle()}
+                                isRotated = false }
                             }
                         }
                     }).background(.regularMaterial)
@@ -123,6 +105,36 @@ struct DigitMinusView :View{
                     
                 }.padding(5)
                 
+            }
+            .blur(radius: showCheck ? 5 : 0)
+            .overlay{
+                if showCheck {
+                    VStack{
+                        if opt == 2{
+                            Text( (result.Value == first.Value-second.Value) ? "恭喜你，答对了😊" : "很可惜，答错了😭")
+                        }else{
+                            Text( (result.Value == first.Value+second.Value) ? "恭喜你，答对了😊" : "很可惜，答错了😭")
+                        }
+                        
+                        if showResult {
+                            if opt == 2 {
+                                Text("正确答案是:\(first.Value-second.Value)")
+                            }else{
+                                Text("正确答案是:\(first.Value+second.Value)")
+                            }
+                            
+                        }
+                    }.frame(width: CGFloat((numOfDigit+2))*50)
+                        .background(Color.blue.opacity(0.2).clipShape(RoundedRectangle(cornerRadius: 5)))
+                        .rotationEffect(Angle.degrees(isRotated ? 30 : 0))
+                        .animation(animation,value: isRotated)
+                        .onAppear{
+                            DispatchQueue.main.asyncAfter(deadline: .now()+3){
+                                withAnimation{
+                                    showCheck = false
+                                }
+                            }}
+                }
             }
             
             Spacer()

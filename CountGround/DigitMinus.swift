@@ -47,6 +47,10 @@ struct DigitMinusView :View{
         }
     }
     
+    var isCorrect:Bool {
+        opt == 2 ? (result.Value == first.Value-second.Value) :  (result.Value == first.Value+second.Value)
+    }
+    
     var body: some View{
         HStack{
             Spacer()
@@ -72,7 +76,7 @@ struct DigitMinusView :View{
                     DispatchQueue.main.asyncAfter(deadline: .now()+1){
                         first.focus = .one
                     }
-                }
+                }.padding(.vertical)
                 HStack(spacing: 15){
                     Spacer()
                     Button("Solve"){
@@ -106,23 +110,14 @@ struct DigitMinusView :View{
                 }.padding(5)
                 
             }
+            //.background(RoundedRectangle(cornerRadius: 10).fill(Color.pink.opacity(0.3)))
             .blur(radius: showCheck ? 5 : 0)
             .overlay{
                 if showCheck {
                     VStack{
-                        if opt == 2{
-                            Text( (result.Value == first.Value-second.Value) ? "恭喜你，答对了😊" : "很可惜，答错了😭")
-                        }else{
-                            Text( (result.Value == first.Value+second.Value) ? "恭喜你，答对了😊" : "很可惜，答错了😭")
-                        }
-                        
+                        Text( isCorrect ? "恭喜你，答对了😊" : "很可惜，答错了😭")
                         if showResult {
-                            if opt == 2 {
-                                Text("正确答案是:\(first.Value-second.Value)")
-                            }else{
-                                Text("正确答案是:\(first.Value+second.Value)")
-                            }
-                            
+                                Text("正确答案是:\(opt == 2 ? first.Value-second.Value : first.Value+second.Value)")
                         }
                     }.frame(width: CGFloat((numOfDigit+2))*50)
                         .background(Color.blue.opacity(0.2).clipShape(RoundedRectangle(cornerRadius: 5)))

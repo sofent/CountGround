@@ -15,6 +15,7 @@ enum Direction:CaseIterable {
 }
 
 struct ClassicPuzzle: View {
+    let size = (min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)*0.8 - 80) / 4
     @State var puzzle:[Int] = Array(1...16)
     @State var win = false
     var body: some View {
@@ -95,12 +96,14 @@ struct ClassicPuzzle: View {
     }
     
     @ViewBuilder func CellView(number:Int)->some View{
+       
         VStack{
-                Text("\(number)")
+                Image(systemName: "\(number).square.fill")
+                .resizable().scaledToFit()
                     .font(.largeTitle)
-                    .foregroundColor(.white)
-        }.frame(width: 50, height: 50)
-            .background(RoundedRectangle(cornerRadius: 5).fill(.brown)).opacity(number==0 ? 0 : 1)
+                    .foregroundColor(.brown)
+        }.frame(width: size, height: size )
+            .opacity(number==0 ? 0 : 1)
     }
     fileprivate func initPuzzle() {
         var puzzle =  Array(1...16)

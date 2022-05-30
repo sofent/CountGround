@@ -12,7 +12,6 @@ extension UIImage {
         let y = (size.height / CGFloat(rows)).rounded()
         let x = (size.width / CGFloat(columns)).rounded()
         var images: [UIImage] = []
-        print(size)
         images.reserveCapacity(rows * columns)
         
         guard let cgImage = cgImage else { return [] }
@@ -27,7 +26,7 @@ extension UIImage {
                     width = Int(size.width - (size.width / CGFloat(columns) * (CGFloat(columns)-1)))
                 }
                 //print( CGPoint(x: column * Int(x), y:  row * Int(y)))
-                if let image = cgImage.cropping(to: CGRect(origin: CGPoint(x: column * Int(x), y:  row * Int(x)), size: CGSize(width: width, height: height))) {
+                if let image = cgImage.cropping(to: CGRect(origin: CGPoint(x: column * Int(x), y:  row * Int(y)), size: CGSize(width: width, height: height))) {
                     images.append(UIImage(cgImage: image, scale: scale, orientation: imageOrientation))
                 }
             }
@@ -38,7 +37,7 @@ extension UIImage {
     func toSquare() -> UIImage {
         let toSize = min(size.height,size.width)
         guard let cgImage = cgImage else { return UIImage() }
-        if let image = cgImage.cropping(to: CGRect(origin: CGPoint(x: size.height > size.width ? 0 : (size.width-size.height) / 2, y: 0), size: CGSize(width: toSize, height: toSize))) {
+        if let image = cgImage.cropping(to: CGRect(origin: CGPoint(x: size.height > size.width ? 0 : (size.width-size.height) / 2, y: size.height > size.width ? (size.height - size.width)/2 : 0), size: CGSize(width: toSize, height: toSize))) {
             return UIImage(cgImage: image, scale: scale, orientation: .up)
         }
         return UIImage()

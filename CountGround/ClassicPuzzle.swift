@@ -21,64 +21,74 @@ struct ClassicPuzzle: View {
     @State var puzzleImages:[UIImage] = [UIImage].init(repeating: UIImage(), count: 16)
     @State var win = false
     @State var showImagePicker = false
+    @State var starDate : Date = .distantPast
     var body: some View {
         
         HStack {
             Spacer()
-            VStack(spacing:1) {
-                ForEach(0...3,id:\.self){nx in
-                    HStack(spacing:1) {
-                        ForEach(0...3,id:\.self){ny in
-                            CellView(number: puzzle[(nx*4)+ny])
+            VStack {
+                if !win && starDate != .distantPast {
+                    TimelineView(.periodic(from:.now, by: 1.0)) { context in
+                        Text("已耗时:\(Int(context.date.timeIntervalSince(starDate).rounded()))秒")
+                    }
+                }else{
+                    Text("未在计时")
+                }
+                VStack(spacing:1) {
+                    ForEach(0...3,id:\.self){nx in
+                        HStack(spacing:1) {
+                            ForEach(0...3,id:\.self){ny in
+                                CellView(number: puzzle[(nx*4)+ny])
+                            }
                         }
                     }
-                }
-            }.padding()
-                .border(.purple,width: 5)
-                .blur(radius: win ? 5 : 0)
-                .overlay{
-                    if win {
-                        VStack{
-                            Text("拼图成功")
-                                .foregroundColor(.blue)
-                                .font(.title.bold())
-                                .padding()
-                        }
-                        .background(.ultraThinMaterial,in: RoundedRectangle(cornerRadius: 10))
-                    }
-                }
-                .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
-                    .onEnded { value in
-                        
-                        let horizontalAmount = value.translation.width as CGFloat
-                        let verticalAmount = value.translation.height as CGFloat
-                        var puzzle = self.puzzle
-                        if abs(horizontalAmount) > abs(verticalAmount) {
-                            print(horizontalAmount < 0 ? "left swipe" : "right swipe")
-                            move(horizontalAmount < 0 ? .left : .right,puzzle: &puzzle)
-                        } else {
-                            print(verticalAmount < 0 ? "up swipe" : "down swipe")
-                            move(verticalAmount < 0 ? .up : .down,puzzle: &puzzle)
-                        }
-                        if puzzle != self.puzzle {
-                            self.puzzle = puzzle
-                        }
-                        
-                    })
-                .onAppear{
-                    initPuzzle()
-                }
-                .onChange(of: puzzle){ p in
-                    var winArray = Array(1...16)
-                    winArray[15] = 0
-                    if p == winArray {
-                        win = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
-                            win = false
-                            initPuzzle()
+                }.padding()
+                    .border(.purple,width: 5)
+                    .blur(radius: win ? 5 : 0)
+                    .overlay{
+                        if win {
+                            VStack{
+                                Text("拼图成功\n共耗时:\(Int(Date.now.timeIntervalSince(starDate).rounded()))秒")
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(.blue)
+                                    .font(.title.bold())
+                                    .padding()
+                            }
+                            .background(.ultraThinMaterial,in: RoundedRectangle(cornerRadius: 10))
                         }
                     }
+                    .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
+                        .onEnded { value in
+                            
+                            let horizontalAmount = value.translation.width as CGFloat
+                            let verticalAmount = value.translation.height as CGFloat
+                            var puzzle = self.puzzle
+                            if abs(horizontalAmount) > abs(verticalAmount) {
+                                print(horizontalAmount < 0 ? "left swipe" : "right swipe")
+                                move(horizontalAmount < 0 ? .left : .right,puzzle: &puzzle)
+                            } else {
+                                print(verticalAmount < 0 ? "up swipe" : "down swipe")
+                                move(verticalAmount < 0 ? .up : .down,puzzle: &puzzle)
+                            }
+                            if puzzle != self.puzzle {
+                                if starDate == .distantPast{
+                                    starDate = .now
+                                }
+                                self.puzzle = puzzle
+                            }
+                            
+                        })
+                    .onAppear{
+                        initPuzzle()
+                    }
+                    .onChange(of: puzzle){ p in
+                        var winArray = Array(1...16)
+                        winArray[15] = 0
+                        if p == winArray {
+                            win = true
+                        }
                 }
+            }
             Spacer()
             VStack(spacing:10){
                 if image != nil {
@@ -146,6 +156,8 @@ struct ClassicPuzzle: View {
             .opacity(number==0 ? 0 : 1)
     }
     fileprivate func initPuzzle() {
+        starDate = .distantPast
+        win = false
         var puzzle =  Array(1...16)
         if let image = image {
             self.puzzleImages = image.toSquare().matrix(4, 4)

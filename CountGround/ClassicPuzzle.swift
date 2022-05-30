@@ -102,7 +102,7 @@ struct ClassicPuzzle: View {
         }
         .sheet(isPresented: $showImagePicker) {
             ImagePickerView(sourceType: .photoLibrary) { image in
-                self.image = image
+                self.image = image.fixedOrientation()
                 initPuzzle()
             }
         }
@@ -152,10 +152,10 @@ struct ClassicPuzzle: View {
         }
         puzzle[15] = 0
        
-        /*for _ in 1...128 {
+        for _ in 1...128 {
             let index = Int.random(in: 0...3)
             move(Direction.allCases[index], puzzle: &puzzle)
-        }*/
+        }
         
         
         print(puzzle)

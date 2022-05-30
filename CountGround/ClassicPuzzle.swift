@@ -22,6 +22,7 @@ struct ClassicPuzzle: View {
     @State var win = false
     @State var showImagePicker = false
     @State var starDate : Date = .distantPast
+    @State var tail = true
     var body: some View {
         
         HStack {
@@ -83,11 +84,13 @@ struct ClassicPuzzle: View {
                     }
                     .onChange(of: puzzle){ p in
                         var winArray = Array(1...16)
-                        winArray[15] = 0
+                        winArray[tail ? 15:0] = 0
                         if p == winArray {
                             win = true
                         }
-                }
+                    }.onChange(of: tail){ _ in
+                        initPuzzle()
+                    }
             }
             Spacer()
             VStack(spacing:10){
@@ -108,6 +111,8 @@ struct ClassicPuzzle: View {
                     initPuzzle()
                 }.buttonStyle(.borderedProminent).padding(.vertical)
                     .disabled(self.image==nil)
+                Toggle("",isOn:$tail).frame(width: 80)
+                Text(tail ? "尾部空格":"头部空格")
             }.padding(.horizontal)
         }
         .sheet(isPresented: $showImagePicker) {
@@ -141,7 +146,7 @@ struct ClassicPuzzle: View {
         
         VStack(spacing:0){
             if image != nil {
-            Image(uiImage: number == 0 ? puzzleImages[15] : puzzleImages [number - 1])
+                Image(uiImage: number == 0 ? puzzleImages[tail ? 15:0] : puzzleImages [number - 1])
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: size, height: size)
@@ -162,7 +167,7 @@ struct ClassicPuzzle: View {
         if let image = image {
             self.puzzleImages = image.toSquare().matrix(4, 4)
         }
-        puzzle[15] = 0
+        puzzle[tail ? 15:0] = 0
        
         for _ in 1...128 {
             let index = Int.random(in: 0...3)
@@ -181,5 +186,6 @@ struct ClassicPuzzle: View {
 struct ClassicPuzzle_Previews: PreviewProvider {
     static var previews: some View {
         ClassicPuzzle()
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

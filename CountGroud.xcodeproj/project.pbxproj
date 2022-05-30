@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33051DF828439A0300E66658 /* ClassicPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33051DF728439A0300E66658 /* ClassicPuzzle.swift */; };
+		33051DFA284447CF00E66658 /* UIImage++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33051DF9284447CF00E66658 /* UIImage++.swift */; };
+		33051DFE2844635200E66658 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33051DFD2844635200E66658 /* ImagePickerView.swift */; };
 		3353E769281C3D710001F12A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E768281C3D710001F12A /* ContentView.swift */; };
 		3353E76B281C48E20001F12A /* DigitMinus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E76A281C48E20001F12A /* DigitMinus.swift */; };
 		3353E76D281CC75E0001F12A /* TapViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E76C281CC75E0001F12A /* TapViewModifier.swift */; };
@@ -42,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33051DF728439A0300E66658 /* ClassicPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicPuzzle.swift; sourceTree = "<group>"; };
+		33051DF9284447CF00E66658 /* UIImage++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage++.swift"; sourceTree = "<group>"; };
+		33051DFD2844635200E66658 /* ImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		3353E768281C3D710001F12A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3353E76A281C48E20001F12A /* DigitMinus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitMinus.swift; sourceTree = "<group>"; };
 		3353E76C281CC75E0001F12A /* TapViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapViewModifier.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 		33D0A1C8281B8315001467EF /* CountGround */ = {
 			isa = PBXGroup;
 			children = (
+				33051DFD2844635200E66658 /* ImagePickerView.swift */,
 				33D0A1FA281BDA48001467EF /* Info.plist */,
 				33D0A1C9281B8315001467EF /* CountGroundApp.swift */,
 				33D0A1CB281B8315001467EF /* CountView.swift */,
@@ -124,6 +131,8 @@
 				3353E770281D849E0001F12A /* BindingValueSyncModifier.swift */,
 				3353E772281D889E0001F12A /* NumberInputView.swift */,
 				3353E774281D88BB0001F12A /* NumberInputViewModel.swift */,
+				33051DF728439A0300E66658 /* ClassicPuzzle.swift */,
+				33051DF9284447CF00E66658 /* UIImage++.swift */,
 			);
 			path = CountGround;
 			sourceTree = "<group>";
@@ -288,10 +297,13 @@
 				3353E775281D88BB0001F12A /* NumberInputViewModel.swift in Sources */,
 				3353E76B281C48E20001F12A /* DigitMinus.swift in Sources */,
 				3353E76D281CC75E0001F12A /* TapViewModifier.swift in Sources */,
+				33051DFE2844635200E66658 /* ImagePickerView.swift in Sources */,
 				33D0A1CC281B8315001467EF /* CountView.swift in Sources */,
 				3353E773281D889E0001F12A /* NumberInputView.swift in Sources */,
 				3353E771281D849E0001F12A /* BindingValueSyncModifier.swift in Sources */,
+				33051DFA284447CF00E66658 /* UIImage++.swift in Sources */,
 				33D0A1CA281B8315001467EF /* CountGroundApp.swift in Sources */,
+				33051DF828439A0300E66658 /* ClassicPuzzle.swift in Sources */,
 				3353E769281C3D710001F12A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

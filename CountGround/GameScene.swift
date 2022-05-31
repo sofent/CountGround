@@ -23,6 +23,7 @@ class GameScene: SKScene {
         super.scaleMode = .aspectFill
         // 1
         self.background.name = "background"
+        self.background.scale(to: size)
         self.background.anchorPoint = .zero
         self.background.zPosition = -1
       
@@ -44,7 +45,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         view.showsPhysics = true
         physicsWorld.contactDelegate = self
-        //setUpAudio()
+        setUpAudio()
         initPuzzle()
     }
     

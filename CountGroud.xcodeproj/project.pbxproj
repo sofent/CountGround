@@ -10,7 +10,7 @@
 		33051DF828439A0300E66658 /* ClassicPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33051DF728439A0300E66658 /* ClassicPuzzle.swift */; };
 		33051DFA284447CF00E66658 /* UIImage++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33051DF9284447CF00E66658 /* UIImage++.swift */; };
 		33051DFE2844635200E66658 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33051DFD2844635200E66658 /* ImagePickerView.swift */; };
-		333454F328462F1100966DBB /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 333454F028462F1100966DBB /* background-music-aac.caf */; };
+		333454F7284646ED00966DBB /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 333454F6284646ED00966DBB /* background-music-aac.caf */; };
 		3353E769281C3D710001F12A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E768281C3D710001F12A /* ContentView.swift */; };
 		3353E76B281C48E20001F12A /* DigitMinus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E76A281C48E20001F12A /* DigitMinus.swift */; };
 		3353E76D281CC75E0001F12A /* TapViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E76C281CC75E0001F12A /* TapViewModifier.swift */; };
@@ -52,7 +52,7 @@
 		33051DF728439A0300E66658 /* ClassicPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicPuzzle.swift; sourceTree = "<group>"; };
 		33051DF9284447CF00E66658 /* UIImage++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage++.swift"; sourceTree = "<group>"; };
 		33051DFD2844635200E66658 /* ImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
-		333454F028462F1100966DBB /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
+		333454F6284646ED00966DBB /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		3353E768281C3D710001F12A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3353E76A281C48E20001F12A /* DigitMinus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitMinus.swift; sourceTree = "<group>"; };
 		3353E76C281CC75E0001F12A /* TapViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapViewModifier.swift; sourceTree = "<group>"; };
@@ -102,10 +102,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		333454E128462E6300966DBB /* Sounds */ = {
+		333454F5284646ED00966DBB /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				333454F028462F1100966DBB /* background-music-aac.caf */,
+				333454F6284646ED00966DBB /* background-music-aac.caf */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -113,7 +113,7 @@
 		33D0A1BD281B8315001467EF = {
 			isa = PBXGroup;
 			children = (
-				333454E128462E6300966DBB /* Sounds */,
+				333454F5284646ED00966DBB /* Sounds */,
 				33D0A1F6281B9DB4001467EF /* Images */,
 				33D0A1C8281B8315001467EF /* CountGround */,
 				33D0A1D9281B8317001467EF /* CountGroudTests */,
@@ -286,7 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				333454F328462F1100966DBB /* background-music-aac.caf in Resources */,
+				333454F7284646ED00966DBB /* background-music-aac.caf in Resources */,
 				33D0A1F9281BB68B001467EF /* Images in Resources */,
 				3388E8442845BDCA000E8D57 /* Images.xcassets in Resources */,
 				33D0A1D1281B8316001467EF /* Preview Assets.xcassets in Resources */,

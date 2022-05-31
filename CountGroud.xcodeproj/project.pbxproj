@@ -10,6 +10,7 @@
 		33051DF828439A0300E66658 /* ClassicPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33051DF728439A0300E66658 /* ClassicPuzzle.swift */; };
 		33051DFA284447CF00E66658 /* UIImage++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33051DF9284447CF00E66658 /* UIImage++.swift */; };
 		33051DFE2844635200E66658 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33051DFD2844635200E66658 /* ImagePickerView.swift */; };
+		333454F328462F1100966DBB /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 333454F028462F1100966DBB /* background-music-aac.caf */; };
 		3353E769281C3D710001F12A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E768281C3D710001F12A /* ContentView.swift */; };
 		3353E76B281C48E20001F12A /* DigitMinus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E76A281C48E20001F12A /* DigitMinus.swift */; };
 		3353E76D281CC75E0001F12A /* TapViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E76C281CC75E0001F12A /* TapViewModifier.swift */; };
@@ -17,6 +18,9 @@
 		3353E771281D849E0001F12A /* BindingValueSyncModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E770281D849E0001F12A /* BindingValueSyncModifier.swift */; };
 		3353E773281D889E0001F12A /* NumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E772281D889E0001F12A /* NumberInputView.swift */; };
 		3353E775281D88BB0001F12A /* NumberInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353E774281D88BB0001F12A /* NumberInputViewModel.swift */; };
+		3388E83E2845BB4C000E8D57 /* SpritePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388E83D2845BB4C000E8D57 /* SpritePuzzle.swift */; };
+		3388E8422845BCAD000E8D57 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388E8412845BCAD000E8D57 /* GameScene.swift */; };
+		3388E8442845BDCA000E8D57 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3388E8432845BDCA000E8D57 /* Images.xcassets */; };
 		33D0A1CA281B8315001467EF /* CountGroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1C9281B8315001467EF /* CountGroundApp.swift */; };
 		33D0A1CC281B8315001467EF /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1CB281B8315001467EF /* CountView.swift */; };
 		33D0A1CE281B8316001467EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D0A1CD281B8316001467EF /* Assets.xcassets */; };
@@ -48,6 +52,7 @@
 		33051DF728439A0300E66658 /* ClassicPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicPuzzle.swift; sourceTree = "<group>"; };
 		33051DF9284447CF00E66658 /* UIImage++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage++.swift"; sourceTree = "<group>"; };
 		33051DFD2844635200E66658 /* ImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		333454F028462F1100966DBB /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		3353E768281C3D710001F12A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3353E76A281C48E20001F12A /* DigitMinus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitMinus.swift; sourceTree = "<group>"; };
 		3353E76C281CC75E0001F12A /* TapViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapViewModifier.swift; sourceTree = "<group>"; };
@@ -55,6 +60,9 @@
 		3353E770281D849E0001F12A /* BindingValueSyncModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingValueSyncModifier.swift; sourceTree = "<group>"; };
 		3353E772281D889E0001F12A /* NumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberInputView.swift; sourceTree = "<group>"; };
 		3353E774281D88BB0001F12A /* NumberInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberInputViewModel.swift; sourceTree = "<group>"; };
+		3388E83D2845BB4C000E8D57 /* SpritePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritePuzzle.swift; sourceTree = "<group>"; };
+		3388E8412845BCAD000E8D57 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		3388E8432845BDCA000E8D57 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		33D0A1C6281B8315001467EF /* or.sofent.CountGround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = or.sofent.CountGround.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D0A1C9281B8315001467EF /* CountGroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountGroundApp.swift; sourceTree = "<group>"; };
 		33D0A1CB281B8315001467EF /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
@@ -94,9 +102,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		333454E128462E6300966DBB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				333454F028462F1100966DBB /* background-music-aac.caf */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		33D0A1BD281B8315001467EF = {
 			isa = PBXGroup;
 			children = (
+				333454E128462E6300966DBB /* Sounds */,
 				33D0A1F6281B9DB4001467EF /* Images */,
 				33D0A1C8281B8315001467EF /* CountGround */,
 				33D0A1D9281B8317001467EF /* CountGroudTests */,
@@ -123,6 +140,7 @@
 				33D0A1C9281B8315001467EF /* CountGroundApp.swift */,
 				33D0A1CB281B8315001467EF /* CountView.swift */,
 				33D0A1CD281B8316001467EF /* Assets.xcassets */,
+				3388E8432845BDCA000E8D57 /* Images.xcassets */,
 				33D0A1CF281B8316001467EF /* Preview Content */,
 				3353E768281C3D710001F12A /* ContentView.swift */,
 				3353E76A281C48E20001F12A /* DigitMinus.swift */,
@@ -133,6 +151,8 @@
 				3353E774281D88BB0001F12A /* NumberInputViewModel.swift */,
 				33051DF728439A0300E66658 /* ClassicPuzzle.swift */,
 				33051DF9284447CF00E66658 /* UIImage++.swift */,
+				3388E83D2845BB4C000E8D57 /* SpritePuzzle.swift */,
+				3388E8412845BCAD000E8D57 /* GameScene.swift */,
 			);
 			path = CountGround;
 			sourceTree = "<group>";
@@ -266,7 +286,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333454F328462F1100966DBB /* background-music-aac.caf in Resources */,
 				33D0A1F9281BB68B001467EF /* Images in Resources */,
+				3388E8442845BDCA000E8D57 /* Images.xcassets in Resources */,
 				33D0A1D1281B8316001467EF /* Preview Assets.xcassets in Resources */,
 				33D0A1CE281B8316001467EF /* Assets.xcassets in Resources */,
 			);
@@ -298,12 +320,14 @@
 				3353E76B281C48E20001F12A /* DigitMinus.swift in Sources */,
 				3353E76D281CC75E0001F12A /* TapViewModifier.swift in Sources */,
 				33051DFE2844635200E66658 /* ImagePickerView.swift in Sources */,
+				3388E83E2845BB4C000E8D57 /* SpritePuzzle.swift in Sources */,
 				33D0A1CC281B8315001467EF /* CountView.swift in Sources */,
 				3353E773281D889E0001F12A /* NumberInputView.swift in Sources */,
 				3353E771281D849E0001F12A /* BindingValueSyncModifier.swift in Sources */,
 				33051DFA284447CF00E66658 /* UIImage++.swift in Sources */,
 				33D0A1CA281B8315001467EF /* CountGroundApp.swift in Sources */,
 				33051DF828439A0300E66658 /* ClassicPuzzle.swift in Sources */,
+				3388E8422845BCAD000E8D57 /* GameScene.swift in Sources */,
 				3353E769281C3D710001F12A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,7 +502,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = or.sofent.CountGround;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sofent.CountGround;
 				PRODUCT_NAME = or.sofent.CountGround;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -494,7 +518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CountGround/Preview Content\"";
-				DEVELOPMENT_TEAM = R9HYVKU5HK;
+				DEVELOPMENT_TEAM = RCBY5FRZG5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CountGround/Info.plist;

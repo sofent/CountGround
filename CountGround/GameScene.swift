@@ -113,7 +113,7 @@ class GameScene: SKScene {
             let p = touch.location(in: self)
              let n = atPoint(p)
                 if let name=n.name,name != "background"{
-                    if n != zeroNode && (n.position-zeroNode.position).length() < CGPoint(x: zeroNode.frame.width, y: zeroNode.frame.height).length() {
+                    if n != zeroNode && (n.position-zeroNode.position).length() < (CGPoint(x: zeroNode.frame.width, y: zeroNode.frame.height).length()) - 1 {
                         //print( abs(n.position.x-zeroNode.position.x),abs(n.position.y-zeroNode.position.y) )
                         selectedNode = n
                         snodePos = p
@@ -155,10 +155,9 @@ class GameScene: SKScene {
             let p = touch.location(in: self)
             let n = atPoint(p)
             let direction = (zeroNode.position - selectedNode.position).normalized()
-            let offset = (zeroNode.position - snodePos) * direction
-            let offset2 = (zeroNode.position - p) * direction
-            print(offset.length(),offset2.length())
-            if  n==zeroNode || offset.length() >= offset2.length() || (p-snodePos).length() < 3{
+            let moveDirction = (p-snodePos).normalized()
+            let cosine = (moveDirction.x*direction.x+direction.y*moveDirction.y)/(direction.length()*moveDirction.length())
+            if  n==zeroNode || cosine > 0 || (p-snodePos).length() < 3{
                 let snodeMove = SKAction.move(to: zeroNode.position, duration: 0.1)
                 let znodeMove = SKAction.move(to: selectedNode.position, duration: 0.1)
                 selectedNode.run(snodeMove)

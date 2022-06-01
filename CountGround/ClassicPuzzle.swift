@@ -22,7 +22,7 @@ struct ClassicPuzzle: View {
     @State var win = false
     @State var showImagePicker = false
     @State var starDate : Date = .distantPast
-    @State var tail = true
+    @AppStorage("tail") var tail = true
     var body: some View {
         
         HStack {

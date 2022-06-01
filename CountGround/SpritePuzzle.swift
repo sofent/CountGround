@@ -9,7 +9,7 @@ import SwiftUI
 import SpriteKit
 
 struct SpritePuzzle: View {
-    var gameScene :SKScene?
+   
     
     var body: some View {
         GeometryReader{ proxy in

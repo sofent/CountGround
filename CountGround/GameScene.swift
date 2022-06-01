@@ -153,11 +153,10 @@ class GameScene: SKScene {
         }
         if let touch = touches.first {
             let p = touch.location(in: self)
-            let n = atPoint(p)
             let direction = (zeroNode.position - selectedNode.position).normalized()
             let moveDirction = (p-snodePos).normalized()
             let cosine = (moveDirction.x*direction.x+direction.y*moveDirction.y)/(direction.length()*moveDirction.length())
-            if  n==zeroNode || cosine > 0 || (p-snodePos).length() < 3{
+            if  cosine > 0 || (p-snodePos).length() < 3{
                 let snodeMove = SKAction.move(to: zeroNode.position, duration: 0.1)
                 let znodeMove = SKAction.move(to: selectedNode.position, duration: 0.1)
                 selectedNode.run(snodeMove)

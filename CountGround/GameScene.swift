@@ -111,10 +111,10 @@ class GameScene: SKScene {
         selectedNode = SKNode()
         if let touch = touches.first {
             let p = touch.location(in: self)
-            self.nodes(at: p).forEach{ n in
+             let n = atPoint(p)
                 if let name=n.name,name != "background"{
-                    if n != zeroNode && abs(n.position.x-zeroNode.position.x) < (n.frame.width+1) && abs(n.position.y-zeroNode.position.y) < (n.frame.height+1) && (n.position.x == zeroNode.position.x || n.position.y == zeroNode.position.y){
-                        print( abs(n.position.x-zeroNode.position.x),abs(n.position.y-zeroNode.position.y) )
+                    if n != zeroNode && (n.position-zeroNode.position).length() < CGPoint(x: zeroNode.frame.width, y: zeroNode.frame.height).length() {
+                        //print( abs(n.position.x-zeroNode.position.x),abs(n.position.y-zeroNode.position.y) )
                         selectedNode = n
                         snodePos = p
                         selectedNode.removeAllActions()
@@ -125,7 +125,7 @@ class GameScene: SKScene {
                     }
                 }
             }
-        }
+        
     }
     
     func degToRad(degree: Double) -> CGFloat {
@@ -154,10 +154,11 @@ class GameScene: SKScene {
         if let touch = touches.first {
             let p = touch.location(in: self)
             let n = atPoint(p)
-            let offset = zeroNode.position - snodePos
-            let offset2 = zeroNode.position - p
+            let direction = (zeroNode.position - selectedNode.position).normalized()
+            let offset = (zeroNode.position - snodePos) * direction
+            let offset2 = (zeroNode.position - p) * direction
             print(offset.length(),offset2.length())
-            if  n==zeroNode || offset.length() >= offset2.length() || abs(offset.length()-offset2.length()) < 3{
+            if  n==zeroNode || offset.length() >= offset2.length() || (p-snodePos).length() < 3{
                 let snodeMove = SKAction.move(to: zeroNode.position, duration: 0.1)
                 let znodeMove = SKAction.move(to: selectedNode.position, duration: 0.1)
                 selectedNode.run(snodeMove)
@@ -167,7 +168,6 @@ class GameScene: SKScene {
                 puzzle.swapAt(puzzle.firstIndex(of: 0)!,puzzle.firstIndex(of: Int(selectedNode.name!)!)!)
                 var answer = Array(1...16)
                 answer[15] = 0
-                print(puzzle)
                 if puzzle == answer {
                     let loseAction = SKAction.run() { [weak self] in
                         guard let `self` = self else { return }
@@ -207,6 +207,10 @@ func -(left: CGPoint, right: CGPoint) -> CGPoint {
 
 func *(point: CGPoint, scalar: CGFloat) -> CGPoint {
   return CGPoint(x: point.x * scalar, y: point.y * scalar)
+}
+
+func *(point: CGPoint, point2: CGPoint) -> CGPoint {
+    return CGPoint(x: point.x * point2.x, y: point.y * point2.y)
 }
 
 func /(point: CGPoint, scalar: CGFloat) -> CGPoint {

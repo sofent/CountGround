@@ -44,20 +44,29 @@ class PuzzleModel:ObservableObject{
         print(puzzle)
         self.puzzle = puzzle
     }
+    fileprivate func check() {
+        if starDate == .distantPast{
+            starDate = .now
+        }
+        var winArray = Array(1...16)
+        winArray[tail ? 15:0] = 0
+        if self.puzzle == winArray {
+            win = true
+        }
+    }
+    
     func move(_ dir:Direction){
         var puzzle = self.puzzle
         self.move(dir,puzzle: &puzzle)
         if puzzle != self.puzzle {
-            if starDate == .distantPast{
-                starDate = .now
-            }
             self.puzzle = puzzle
-            var winArray = Array(1...16)
-            winArray[tail ? 15:0] = 0
-            if self.puzzle == winArray {
-                win = true
-            }
+            check()
         }
+    }
+    
+    func swap(_ a:Int, _ b:Int){
+        puzzle.swapAt(a, b)
+        check()
     }
     
     fileprivate func move(_ dir:Direction,  puzzle:inout [Int]){

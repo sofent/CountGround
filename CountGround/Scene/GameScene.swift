@@ -41,8 +41,6 @@ class GameScene: SKScene {
         self.shape=shape
         addChild(shape)
         
-        
-        
     }
     
     override func didMove(to view: SKView) {
@@ -141,10 +139,8 @@ class GameScene: SKScene {
                 zeroNode.removeAllActions()
                 zeroNode.run(znodeMove)
                 //zeroNode.position = np
-                model.puzzle.swapAt(model.puzzle.firstIndex(of: 0)!,model.puzzle.firstIndex(of: Int(selectedNode.name!)!)!)
-                var answer = Array(1...16)
-                answer[15] = 0
-                if model.puzzle == answer {
+                model.swap(model.puzzle.firstIndex(of: 0)!,model.puzzle.firstIndex(of: Int(selectedNode.name!)!)!)
+                if model.win {
                     let loseAction = SKAction.run() { [weak self] in
                         guard let `self` = self else { return }
                         let reveal = SKTransition.flipHorizontal(withDuration: 0.5)

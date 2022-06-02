@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import SwiftUI
-
+import SpriteKit
 
 enum Direction:CaseIterable {
     case up
@@ -25,6 +25,7 @@ class PuzzleModel:ObservableObject{
     @Published var showImagePicker = false
     @Published var starDate : Date = .distantPast
     @AppStorage("tail") var tail = true
+    var scene :GameScene?
     
     func initPuzzle() {
         starDate = .distantPast
@@ -61,6 +62,20 @@ class PuzzleModel:ObservableObject{
         if puzzle != self.puzzle {
             self.puzzle = puzzle
             check()
+        }
+    }
+    
+    
+    func reset(){
+        if let scene = self.scene {
+            let newScene = GameScene()
+            newScene.model = self
+            newScene.scaleMode = scene.scaleMode
+            newScene.size=scene.size
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            print(scene.view)
+            scene.view?.presentScene(newScene, transition: reveal)
+            
         }
     }
     

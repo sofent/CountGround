@@ -11,6 +11,8 @@ import SpriteKit
 struct SpritePuzzle: View {
     @EnvironmentObject var model :PuzzleModel
     
+    var scene = GameScene()
+    
     var body: some View {
         GeometryReader{ proxy in
             let size = min(proxy.size.height,proxy.size.width)
@@ -18,11 +20,16 @@ struct SpritePuzzle: View {
            
             SpriteView(scene: createScene(size))
                 .frame(width: size, height: size).offset(x: (proxy.size.width-size)/2, y: (proxy.size.height-size)/2)
+                .onChange(of: model.tail){ _ in
+                    print("reset")
+                    model.reset()
+                }
         }
     }
     
     func createScene(_ size:CGFloat)->GameScene {
-        let scene = GameScene(size: CGSize(width: size, height: size),model:model)
+        scene.size = CGSize(width: size, height: size)
+        scene.model = model
         return scene
     }
 }

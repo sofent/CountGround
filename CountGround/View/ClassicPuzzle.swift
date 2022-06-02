@@ -46,7 +46,12 @@ struct ClassicPuzzle: View {
                     self.model.showImagePicker = true
                 }.buttonStyle(.borderedProminent).padding(.vertical)
                 Button("重新开始"){
-                    model.initPuzzle()
+                    if self.useSprite {
+                        model.reset()
+                    }else{
+                        model.initPuzzle()
+                    }
+                    
                 }.buttonStyle(.borderedProminent).padding(.vertical)
                 Button("清除图片"){
                     self.model.image = nil

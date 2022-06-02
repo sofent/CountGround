@@ -14,22 +14,17 @@ class GameScene: SKScene {
     var selectedNode = SKNode()
     var snodePos = CGPoint.zero
     var shape = SKShapeNode()
-    var model :PuzzleModel
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var model :PuzzleModel = PuzzleModel()
+   
     
-    init(size: CGSize,model:PuzzleModel) {
-        self.model = model
-        super.init(size: size)
-       
+    override func didMove(to view: SKView) {
+        self.model.scene = self
         super.scaleMode = .aspectFill
-        // 1
         self.background.name = "background"
         self.background.scale(to: size)
         self.background.anchorPoint = .zero
         self.background.zPosition = -1
-        
+       
         // 2
         self.addChild(background)
         let  shapeSize = CGSize(width: size.width*0.8, height: size.width*0.8)
@@ -41,9 +36,6 @@ class GameScene: SKScene {
         self.shape=shape
         addChild(shape)
         
-    }
-    
-    override func didMove(to view: SKView) {
         view.showsPhysics = true
         physicsWorld.contactDelegate = self
         setUpAudio()
@@ -82,6 +74,7 @@ class GameScene: SKScene {
     }
     
    
+    
     
     private func setUpAudio() {
         let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
@@ -240,7 +233,9 @@ class GameOverScene: SKScene {
                 // 5
                 guard let `self` = self else { return }
                 let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-                let scene = GameScene(size: size,model: self.model)
+                let scene = GameScene()
+                scene.model = model
+                scene.size = self.size
                 self.view?.presentScene(scene, transition:reveal)
             }
         ]))

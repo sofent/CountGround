@@ -110,6 +110,45 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		33B2385B2848399500DD520C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3388E83D2845BB4C000E8D57 /* SpritePuzzle.swift */,
+				3353E772281D889E0001F12A /* NumberInputView.swift */,
+				33051DF728439A0300E66658 /* ClassicPuzzle.swift */,
+				3353E76A281C48E20001F12A /* DigitMinus.swift */,
+				33D0A1CB281B8315001467EF /* CountView.swift */,
+				33051DFD2844635200E66658 /* ImagePickerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		33B2385C284839AB00DD520C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3353E774281D88BB0001F12A /* NumberInputViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		33B2385D284839B500DD520C /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				3353E76C281CC75E0001F12A /* TapViewModifier.swift */,
+				33051DF9284447CF00E66658 /* UIImage++.swift */,
+				3353E770281D849E0001F12A /* BindingValueSyncModifier.swift */,
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		33B2385E284839C200DD520C /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				3388E8412845BCAD000E8D57 /* GameScene.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 		33D0A1BD281B8315001467EF = {
 			isa = PBXGroup;
 			children = (
@@ -135,24 +174,17 @@
 		33D0A1C8281B8315001467EF /* CountGround */ = {
 			isa = PBXGroup;
 			children = (
-				33051DFD2844635200E66658 /* ImagePickerView.swift */,
+				33B2385E284839C200DD520C /* Scene */,
+				33B2385D284839B500DD520C /* Extenstions */,
+				33B2385C284839AB00DD520C /* Model */,
+				33B2385B2848399500DD520C /* View */,
 				33D0A1FA281BDA48001467EF /* Info.plist */,
 				33D0A1C9281B8315001467EF /* CountGroundApp.swift */,
-				33D0A1CB281B8315001467EF /* CountView.swift */,
 				33D0A1CD281B8316001467EF /* Assets.xcassets */,
 				3388E8432845BDCA000E8D57 /* Images.xcassets */,
 				33D0A1CF281B8316001467EF /* Preview Content */,
 				3353E768281C3D710001F12A /* ContentView.swift */,
-				3353E76A281C48E20001F12A /* DigitMinus.swift */,
-				3353E76C281CC75E0001F12A /* TapViewModifier.swift */,
 				3353E76E281D840A0001F12A /* AppDelegate.swift */,
-				3353E770281D849E0001F12A /* BindingValueSyncModifier.swift */,
-				3353E772281D889E0001F12A /* NumberInputView.swift */,
-				3353E774281D88BB0001F12A /* NumberInputViewModel.swift */,
-				33051DF728439A0300E66658 /* ClassicPuzzle.swift */,
-				33051DF9284447CF00E66658 /* UIImage++.swift */,
-				3388E83D2845BB4C000E8D57 /* SpritePuzzle.swift */,
-				3388E8412845BCAD000E8D57 /* GameScene.swift */,
 			);
 			path = CountGround;
 			sourceTree = "<group>";

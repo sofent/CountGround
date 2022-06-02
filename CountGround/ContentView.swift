@@ -14,8 +14,8 @@ struct ContentView : View{
             VStack{
                 NavigationLink("Count Ground", destination:  CountView()).padding()
                 NavigationLink("Minus Digit", destination:  DigitMinusView()).padding()
-                NavigationLink("Classsic Puzzle", destination:  ClassicPuzzle()).padding()
-                NavigationLink("Sprite Puzzle", destination:  SpritePuzzle()).padding()
+                NavigationLink("Classsic Puzzle", destination:  ClassicPuzzle(useSprite: false)).padding()
+                NavigationLink("Sprite Puzzle", destination:   ClassicPuzzle(useSprite: true)).padding()
             }
             Text("Welcome")
         }

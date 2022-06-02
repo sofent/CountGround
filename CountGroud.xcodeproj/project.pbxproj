@@ -21,6 +21,8 @@
 		3388E83E2845BB4C000E8D57 /* SpritePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388E83D2845BB4C000E8D57 /* SpritePuzzle.swift */; };
 		3388E8422845BCAD000E8D57 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388E8412845BCAD000E8D57 /* GameScene.swift */; };
 		3388E8442845BDCA000E8D57 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3388E8432845BDCA000E8D57 /* Images.xcassets */; };
+		33B2386028483D4F00DD520C /* SwiftPuzzleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2385F28483D4F00DD520C /* SwiftPuzzleView.swift */; };
+		33B2386228483DBE00DD520C /* PuzzleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2386128483DBE00DD520C /* PuzzleModel.swift */; };
 		33D0A1CA281B8315001467EF /* CountGroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1C9281B8315001467EF /* CountGroundApp.swift */; };
 		33D0A1CC281B8315001467EF /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0A1CB281B8315001467EF /* CountView.swift */; };
 		33D0A1CE281B8316001467EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D0A1CD281B8316001467EF /* Assets.xcassets */; };
@@ -63,6 +65,8 @@
 		3388E83D2845BB4C000E8D57 /* SpritePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritePuzzle.swift; sourceTree = "<group>"; };
 		3388E8412845BCAD000E8D57 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		3388E8432845BDCA000E8D57 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		33B2385F28483D4F00DD520C /* SwiftPuzzleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPuzzleView.swift; sourceTree = "<group>"; };
+		33B2386128483DBE00DD520C /* PuzzleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleModel.swift; sourceTree = "<group>"; };
 		33D0A1C6281B8315001467EF /* or.sofent.CountGround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = or.sofent.CountGround.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D0A1C9281B8315001467EF /* CountGroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountGroundApp.swift; sourceTree = "<group>"; };
 		33D0A1CB281B8315001467EF /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				3353E76A281C48E20001F12A /* DigitMinus.swift */,
 				33D0A1CB281B8315001467EF /* CountView.swift */,
 				33051DFD2844635200E66658 /* ImagePickerView.swift */,
+				33B2385F28483D4F00DD520C /* SwiftPuzzleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				3353E774281D88BB0001F12A /* NumberInputViewModel.swift */,
+				33B2386128483DBE00DD520C /* PuzzleModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -351,8 +357,10 @@
 				3353E775281D88BB0001F12A /* NumberInputViewModel.swift in Sources */,
 				3353E76B281C48E20001F12A /* DigitMinus.swift in Sources */,
 				3353E76D281CC75E0001F12A /* TapViewModifier.swift in Sources */,
+				33B2386028483D4F00DD520C /* SwiftPuzzleView.swift in Sources */,
 				33051DFE2844635200E66658 /* ImagePickerView.swift in Sources */,
 				3388E83E2845BB4C000E8D57 /* SpritePuzzle.swift in Sources */,
+				33B2386228483DBE00DD520C /* PuzzleModel.swift in Sources */,
 				33D0A1CC281B8315001467EF /* CountView.swift in Sources */,
 				3353E773281D889E0001F12A /* NumberInputView.swift in Sources */,
 				3353E771281D849E0001F12A /* BindingValueSyncModifier.swift in Sources */,

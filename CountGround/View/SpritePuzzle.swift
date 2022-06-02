@@ -9,7 +9,7 @@ import SwiftUI
 import SpriteKit
 
 struct SpritePuzzle: View {
-   
+    @EnvironmentObject var model :PuzzleModel
     
     var body: some View {
         GeometryReader{ proxy in
@@ -22,7 +22,7 @@ struct SpritePuzzle: View {
     }
     
     func createScene(_ size:CGFloat)->GameScene {
-        let scene = GameScene(size: CGSize(width: size, height: size))
+        let scene = GameScene(size: CGSize(width: size, height: size),model:model)
         return scene
     }
 }
@@ -30,6 +30,7 @@ struct SpritePuzzle: View {
 struct SpritePuzzle_Previews: PreviewProvider {
     static var previews: some View {
         SpritePuzzle()
+            .environmentObject(PuzzleModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

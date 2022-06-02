@@ -13,14 +13,16 @@ class GameScene: SKScene {
     var zeroNode = SKNode()
     var selectedNode = SKNode()
     var snodePos = CGPoint.zero
-    var puzzle =  Array(1...16)
     var shape = SKShapeNode()
+    var model :PuzzleModel
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override init(size: CGSize) {
+    init(size: CGSize,model:PuzzleModel) {
+        self.model = model
         super.init(size: size)
+       
         super.scaleMode = .aspectFill
         // 1
         self.background.name = "background"
@@ -51,27 +53,20 @@ class GameScene: SKScene {
     }
     
     func initPuzzle(){
-        var puzzle =  Array(1...16)
-        puzzle[15] = 0
-        
-        for _ in 1...128 {
-            let index = Int.random(in: 0...3)
-            move(Direction.allCases[index], puzzle: &puzzle)
-        }
-        self.puzzle = puzzle
+        model.initPuzzle()
         let nodeSize = CGSize(width: (shape.frame.size.width-20)/4, height: (shape.frame.size.height-20)/4)
         shape.removeAllChildren()
         (0...3).forEach{ x in
             (0...3).forEach{ y in
                 let config = UIImage.SymbolConfiguration(pointSize: nodeSize.width, weight: .bold)
-                var image = UIImage(systemName: "\(puzzle[x+4*y]).square.fill",withConfiguration: config)!
+                var image = UIImage(systemName: "\(model.puzzle[x+4*y]).square.fill",withConfiguration: config)!
                 image = image.withColor(.brown)
                 
                 let txt = SKTexture(image: image)
                 let node = SKSpriteNode(texture: txt)
                 node.size = nodeSize
                 node.position = CGPoint(x: nodeSize.width*(CGFloat(x)+0.5)+10, y: nodeSize.height*(CGFloat(3-y)+0.5)+10)
-                node.name = "\(puzzle[x+4*y])"
+                node.name = "\(model.puzzle[x+4*y])"
                 node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
                 node.physicsBody?.isDynamic=false
                 shape.addChild(node)
@@ -83,24 +78,7 @@ class GameScene: SKScene {
         }
     }
     
-    func move(_ dir:Direction,  puzzle:inout [Int]){
-        let zeroindex = puzzle.firstIndex(of: 0)!
-        switch dir {
-        case .up,.down:
-            let destIndex = dir == .up ? zeroindex + 4 : zeroindex - 4
-            if destIndex >= 0 && destIndex <= 15 {
-                puzzle.swapAt(zeroindex, destIndex)
-            }
-        case .left:
-            if (zeroindex % 4) != 3 {
-                puzzle.swapAt(zeroindex, zeroindex+1)
-            }
-        case .right:
-            if (zeroindex % 4) != 0 {
-                puzzle.swapAt(zeroindex, zeroindex-1)
-            }
-        }
-    }
+   
     
     private func setUpAudio() {
         let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
@@ -163,14 +141,14 @@ class GameScene: SKScene {
                 zeroNode.removeAllActions()
                 zeroNode.run(znodeMove)
                 //zeroNode.position = np
-                puzzle.swapAt(puzzle.firstIndex(of: 0)!,puzzle.firstIndex(of: Int(selectedNode.name!)!)!)
+                model.puzzle.swapAt(model.puzzle.firstIndex(of: 0)!,model.puzzle.firstIndex(of: Int(selectedNode.name!)!)!)
                 var answer = Array(1...16)
                 answer[15] = 0
-                if puzzle == answer {
+                if model.puzzle == answer {
                     let loseAction = SKAction.run() { [weak self] in
                         guard let `self` = self else { return }
                         let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-                        let gameOverScene = GameOverScene(size: self.size)
+                        let gameOverScene = GameOverScene(size: self.size,model: self.model)
                         self.view?.presentScene(gameOverScene, transition: reveal)
                     }
                     self.run(loseAction)
@@ -228,9 +206,11 @@ extension CGPoint {
 
 
 class GameOverScene: SKScene {
-    override init(size: CGSize) {
+    var model:PuzzleModel
+    init(size: CGSize,model:PuzzleModel) {
+        self.model = model
         super.init(size: size)
-        
+      
         // 1
         backgroundColor = SKColor.systemPink
         
@@ -252,7 +232,7 @@ class GameOverScene: SKScene {
                 // 5
                 guard let `self` = self else { return }
                 let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-                let scene = GameScene(size: size)
+                let scene = GameScene(size: size,model: self.model)
                 self.view?.presentScene(scene, transition:reveal)
             }
         ]))

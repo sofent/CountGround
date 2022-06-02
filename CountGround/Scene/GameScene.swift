@@ -57,8 +57,13 @@ class GameScene: SKScene {
         (0...3).forEach{ x in
             (0...3).forEach{ y in
                 let config = UIImage.SymbolConfiguration(pointSize: nodeSize.width, weight: .bold)
-                var image = UIImage(systemName: "\(model.puzzle[x+4*y]).square.fill",withConfiguration: config)!
-                image = image.withColor(.brown)
+                var image :UIImage
+                if model.image != nil{
+                    image = model.puzzleImages[model.tail ? model.puzzle[x+4*y] : model.puzzle[x+4*y] - 1 ]
+                }else{
+                    image = UIImage(systemName: "\(model.puzzle[x+4*y]).square.fill",withConfiguration: config)!
+                    image = image.withColor(.brown)
+                }
                 
                 let txt = SKTexture(image: image)
                 let node = SKSpriteNode(texture: txt)
@@ -220,6 +225,13 @@ class GameOverScene: SKScene {
         label.fontColor = SKColor.black
         label.position = CGPoint(x: size.width/2, y: size.height/2)
         addChild(label)
+        
+        let timeLable = SKLabelNode(fontNamed: "Chalkduster")
+        timeLable.text = "Total Time: \(Int(Date.now.timeIntervalSince(model.starDate).rounded())) secs"
+        timeLable.fontSize = 40
+        timeLable.fontColor = SKColor.black
+        timeLable.position = CGPoint(x: size.width/2, y: size.height/2-100)
+        addChild(timeLable)
         
         // 4
         run(SKAction.sequence([

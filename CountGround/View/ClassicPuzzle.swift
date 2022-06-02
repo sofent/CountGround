@@ -30,6 +30,8 @@ struct ClassicPuzzle: View {
                 }else{
                     SwiftPuzzleView().environmentObject(model)
                 }
+            }.onChange(of: model.tail){ _ in
+                model.initPuzzle()
             }
             
             Spacer()

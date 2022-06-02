@@ -52,9 +52,6 @@ struct SwiftPuzzleView: View {
             .onAppear{
                 model.initPuzzle()
             }
-            .onChange(of: model.tail){ _ in
-                model.initPuzzle()
-            }
     }
     
     @ViewBuilder func CellView(number:Int)->some View{

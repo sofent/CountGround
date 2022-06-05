@@ -25,7 +25,7 @@ class PuzzleModel:ObservableObject{
     @Published var showImagePicker = false
     @Published var starDate : Date = .distantPast
     @AppStorage("tail") var tail = true
-    var scene :GameScene?
+    @Published var needReset = false
     
     func initPuzzle() {
         starDate = .distantPast
@@ -67,16 +67,7 @@ class PuzzleModel:ObservableObject{
     
     
     func reset(){
-        if let scene = self.scene {
-            let newScene = GameScene()
-            newScene.model = self
-            newScene.scaleMode = scene.scaleMode
-            newScene.size=scene.size
-            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            print(scene.view)
-            scene.view?.presentScene(newScene, transition: reveal)
-            
-        }
+        self.needReset = true
     }
     
     func swap(_ a:Int, _ b:Int){

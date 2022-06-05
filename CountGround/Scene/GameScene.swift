@@ -18,7 +18,6 @@ class GameScene: SKScene {
    
     
     override func didMove(to view: SKView) {
-        self.model.scene = self
         super.scaleMode = .aspectFill
         self.background.name = "background"
         self.background.scale(to: size)
@@ -40,6 +39,21 @@ class GameScene: SKScene {
         physicsWorld.contactDelegate = self
         setUpAudio()
         initPuzzle()
+    }
+    
+    override func update(_ currentTime: TimeInterval){
+        if model.needReset {
+            model.needReset = false
+            let scene = self
+            let newScene = GameScene()
+            newScene.model = self.model
+            newScene.scaleMode = scene.scaleMode
+            newScene.size=scene.size
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            print(scene.view)
+            scene.view?.presentScene(newScene, transition: reveal)
+        }
+        
     }
     
     func initPuzzle(){
@@ -156,9 +170,6 @@ class GameScene: SKScene {
 }
 
 extension GameScene: SKPhysicsContactDelegate {
-    override func update(_ currentTime: TimeInterval) {
-        
-    }
     
     func didBegin(_ contact: SKPhysicsContact) {
         if contact.bodyA.node == selectedNode || contact.bodyB.node == selectedNode{
